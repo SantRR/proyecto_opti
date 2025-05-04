@@ -27,7 +27,9 @@ def gradiente_simple(f, u_0, f_0, lambdaaaaa, learning_rate, max_iter=10_000, e=
     return u_1
 
 
-def gradiente_momentum(f, u_0, f_0, lambdaaaaa, learning_rate, momentum=0.9, max_iter=10_000, e=1e-5):
+def gradiente_momentum(
+    f, u_0, f_0, lambdaaaaa, learning_rate, momentum=0.9, max_iter=10_000, e=1e-5
+):
     f_grad = grad(f)
     v_0 = np.zeros_like(u_0)
     for _ in range(max_iter):
@@ -42,7 +44,9 @@ def gradiente_momentum(f, u_0, f_0, lambdaaaaa, learning_rate, momentum=0.9, max
     return u_1
 
 
-def gradiente_nesterov(f, u_0, f_0, lambdaaaaa, learning_rate, momentum=0.9, max_iter=10_000, e=1e-5):
+def gradiente_nesterov(
+    f, u_0, f_0, lambdaaaaa, learning_rate, momentum=0.9, max_iter=10_000, e=1e-5
+):
     f_grad = grad(f)
     v_0 = np.zeros_like(u_0)
     for _ in range(max_iter):
