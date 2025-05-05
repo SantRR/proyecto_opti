@@ -1,15 +1,19 @@
 import time
 
-import cv2
 import matplotlib.pyplot as plt
 from skimage.metrics import peak_signal_noise_ratio as psnr
 from skimage.metrics import structural_similarity as ssim
 
 
-def evaluar_resultado(imagen_original, imagen_denoised):
-    valor_psnr = psnr(imagen_original, imagen_denoised, data_range=255)
-    valor_ssim = ssim(imagen_original, imagen_denoised, data_range=255)
-    return valor_psnr, valor_ssim
+def evaluar_resultado(
+    imagen_denoiseada, imagen_referencia, nombre_metodo, std_ruido, tiempo_ejecucion
+):
+    psnr_val = psnr(imagen_referencia, imagen_denoiseada, data_range=255)
+    ssim_val = ssim(imagen_referencia, imagen_denoiseada, data_range=255)
+    print(f"\nResultados - Método: {nombre_metodo}, Ruido STD: {std_ruido}")
+    print(f"PSNR: {psnr_val:.2f} dB")
+    print(f"SSIM: {ssim_val:.4f}")
+    print(f"Tiempo de ejecución: {tiempo_ejecucion:.4f} segundos")
 
 
 def mostrar_resultado(original, noisy, denoised, metodo, std):
